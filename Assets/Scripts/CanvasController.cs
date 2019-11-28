@@ -41,8 +41,8 @@ public class CanvasController : MonoBehaviour {
 	}
 
 	public void GameOverTextChanger (bool state) {
-	voceMorreu.enabled = state;
-	subTitulo.enabled = state;
+		voceMorreu.enabled = state;
+		subTitulo.enabled = state;
 	}
 
 	public void CallCanvasGameOver () {

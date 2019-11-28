@@ -4,36 +4,45 @@ using UnityEngine;
 
 public class FlashLightManager : MonoBehaviour {
 
-	bool isOn;
 	bool haveLantern;
 
-	private void Awake() {
-			this.gameObject.GetComponentInChildren<Light>().enabled = false;		
+	private GameObject go;
+	private bool estaLigado;
+
+	private void Awake () {
+		go = this.gameObject;
+		go.GetComponentInChildren<Light> ().enabled = false;
 	}
 
 	public void PegarLanterna () {
 		haveLantern = true;
-		isOn = true;
-		this.gameObject.GetComponentInChildren<Light>().enabled = true;
-		Debug.Log("Esta Acontecendo");
+		estaLigado = true;
+		this.gameObject.GetComponentInChildren<Light> ().enabled = true;
+		Debug.Log ("Esta Acontecendo");
 	}
 
+	// public void ToggleLantern () {
+	// 	if (Input.GetKeyDown (KeyCode.Mouse0)) estaLigado = !estaLigado;
+	// 	go.GetComponentInChildren<Light> ().enabled = estaLigado;
+	// }
+	
+	
 	public void TurnLanternOnOff () {
-		if (isOn && haveLantern) {
-			if (Input.GetKeyDown(KeyCode.Mouse0)) {
-				isOn = false;
-				this.gameObject.GetComponentInChildren<Light>().enabled = false;
+		if (estaLigado) {
+			if (Input.GetKeyDown (KeyCode.Mouse0)) {
+				estaLigado = false;
+				go.GetComponentInChildren<Light> ().enabled = false;
 			}
-		} else if (!isOn && haveLantern) {
-			if (Input.GetKeyDown(KeyCode.Mouse0)) {
-				isOn = true;
-				this.gameObject.GetComponentInChildren<Light>().enabled = true;
+		} else {
+			if (Input.GetKeyDown (KeyCode.Mouse0)) {
+				estaLigado = true;
+				go.GetComponentInChildren<Light> ().enabled = true;
 			}
-
 		}
 	}
 
 	private void Update () {
 		TurnLanternOnOff ();
 	}
+
 }
